@@ -1,9 +1,6 @@
 name: Send Weather Email
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 7 * * *' # Setiap hari pukul 07:00 WIB
 
@@ -23,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip  
-          pip install requests
+          pip install requests python-dateutil
 
       - name: Set environment variables
         run: |

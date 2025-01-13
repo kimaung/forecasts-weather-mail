@@ -1,6 +1,6 @@
 import requests  
 import json  
-from datetime import datetime  
+from dateutil import parser  
   
 def fetch_weather(api_key, location_key):  
     url = f"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location_key}?apikey={api_key}&language=id"  
@@ -12,8 +12,8 @@ def fetch_weather(api_key, location_key):
       
     weather_info = {  
         "headline_text": headline['Text'],  
-        "headline_effective_date": datetime.fromisoformat(headline['EffectiveDate'][:-1]).strftime('%d-%m-%Y %H:%M'),  
-        "headline_end_date": datetime.fromisoformat(headline['EndDate'][:-1]).strftime('%d-%m-%Y %H:%M'),  
+        "headline_effective_date": parser.parse(headline['EffectiveDate']).strftime('%d-%m-%Y %H:%M'),  
+        "headline_end_date": parser.parse(headline['EndDate']).strftime('%d-%m-%Y %H:%M'),  
         "headline_severity": headline['Severity'],  
         "temperature_min": daily_forecast['Temperature']['Minimum']['Value'],  
         "temperature_max": daily_forecast['Temperature']['Maximum']['Value'],  
