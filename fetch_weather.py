@@ -76,6 +76,7 @@ def format_weather(weather_info, sender_name):
 if __name__ == "__main__":  
     api_key = os.getenv('ACCUWEATHER_API_KEY')  
     location_key = "202243"  
+    sender_name = "Dukun Chabul"
     weather_info = fetch_weather(api_key, location_key)  
     formatted_weather = format_weather(weather_info, sender_name)  
     with open('email_body.html', 'w') as f:  
