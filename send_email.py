@@ -20,7 +20,7 @@ def send_email(subject, body, to_email, from_email, password):
 if __name__ == "__main__":  
     import os  
     subject = "Ramalan Cuaca Hari Ini"  
-    body = "Berikut adalah ramalan cuaca hari ini:"  
+    body = open('email.txt').read()  
     to_email = os.getenv('EMAIL_TO')  
     from_email = os.getenv('EMAIL_FROM')  
     password = os.getenv('EMAIL_PASSWORD')  
