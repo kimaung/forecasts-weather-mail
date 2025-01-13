@@ -32,10 +32,13 @@ jobs:
           echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> $GITHUB_ENV  
           echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> $GITHUB_ENV
 
-      - name: Fetch weather data
+      - name: Fetch weather data and format email body
+        id: fetch_weather
         run: |
-          echo "Berikut adalah ramalan cuaca hari ini:" > email.txt  
-          python fetch_weather.py >> email.txt
+          formatted_weather=$(python fetch_weather.py)  
+          echo "EMAIL_BODY=$formatted_weather" >> $GITHUB_ENV
 
       - name: Send email
-        run: python send_email.py
+        run: |
+          echo "EMAIL_BODY: $EMAIL_BODY"  
+          python send_email.py
