@@ -42,75 +42,36 @@ def format_weather(weather_info):
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Ramalan Cuaca</title>  
-    <style>  
-        body {{  
-            font-family: Arial, sans-serif;  
-            background-color: #f4f4f9;  
-            margin: 0;  
-            padding: 20px;  
-        }}  
-        .container {{  
-            background-color: #ffffff;  
-            padding: 20px;  
-            border-radius: 8px;  
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-        }}  
-        h1 {{  
-            color: #333333;  
-        }}  
-        .section {{  
-            margin-bottom: 20px;  
-        }}  
-        .section h2 {{  
-            color: #555555;  
-            border-bottom: 2px solid #dddddd;  
-            padding-bottom: 5px;  
-            margin-bottom: 10px;  
-        }}  
-        .section p {{  
-            color: #333333;  
-        }}  
-        .link {{  
-            color: #007bff;  
-            text-decoration: none;  
-        }}  
-        .link:hover {{  
-            text-decoration: underline;  
-        }}  
-    </style>  
+    <link rel="stylesheet" href="styles.css">  
 </head>  
 <body>  
-    <div class="container">  
-        <h1>Ramalan Cuaca Hari Ini</h1>  
-          
-        <div class="section">  
-            <h2>Judul Ramalan Cuaca</h2>  
-            <p><strong>Teks:</strong> {weather_info['headline_text']}</p>  
+    <div class="weather-forecast">  
+        <h2>Ramalan Cuaca di Serang</h2>  
+        <div class="headline">  
             <p><strong>Tanggal Efektif:</strong> {weather_info['headline_effective_date']}</p>  
             <p><strong>Tanggal Berakhir:</strong> {weather_info['headline_end_date']}</p>  
-            <p><strong>Severity:</strong> {weather_info['headline_severity']}</p>  
+            <p><strong>Tingkat Keparahan:</strong> {weather_info['headline_severity']}</p>  
+            <p><strong>Deskripsi:</strong> {weather_info['headline_text']}</p>  
         </div>  
           
-        <div class="section">  
-            <h2>Suhu</h2>  
-            <p><strong>Suhu Minimum:</strong> {temp_min_celsius:.1f} °C</p>  
-            <p><strong>Suhu Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
-        </div>  
+        <h3>Temperatur</h3>  
+        <p><strong>Minimum:</strong> {temp_min_celsius:.1f} °C</p>  
+        <p><strong>Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
           
-        <div class="section">  
-            <h2>Kondisi Cuaca Harian</h2>  
-            <p><strong>Ikon Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
-            <p><strong>Deskripsi Cuaca Siang:</strong> {'Hujan' if weather_info['day_has_precipitation'] else 'Tidak Hujan'}</p>  
-            <p><strong>Jenis Presipitapasi Siang:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
-            <p><strong>Ikon Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
-            <p><strong>Deskripsi Cuaca Malam:</strong> {'Hujan' if weather_info['night_has_precipitation'] else 'Tidak Hujan'}</p>  
-            <p><strong>Jenis Presipitasi Malam:</strong> {weather_info['night_precipitation_type'] if weather_info['night_has_precipitation'] else 'N/A'}</p>  
+        <h3>Kondisi Cuaca</h3>  
+        <div class="weather-icon">  
+            <img src="icon-thunderstorms.png" alt="Thunderstorms">  
         </div>  
+        <p><strong>Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
+        <p><strong>Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
           
-        <div class="section">  
-            <h2>Link untuk Informasi Lebih Lanjut</h2>  
-            <p><a href="{weather_info['mobile_link']}" class="link">Tautan ke Halaman Ramalan Cuaca</a></p>  
-        </div>  
+        <h3>Probabilitas Presipitasi</h3>  
+        <p>Hujan di siang hari: <strong>{'Ya' if weather_info['day_has_precipitation'] else 'Tidak'}</strong></p>  
+        <p>Hujan di malam hari: <strong>{'Ya' if weather_info['night_has_precipitation'] else 'Tidak'}</strong></p>  
+        <p><strong>Jenis Presipitasi:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
+          
+        <h3>Informasi Lebih Lanjut</h3>  
+        <p><a href="{weather_info['mobile_link']}" target="_blank">Lihat lebih lanjut</a></p>  
     </div>  
 </body>  
 </html>  
