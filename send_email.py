@@ -8,7 +8,7 @@ def send_email(subject, body, to_email, from_email, password):
     msg['To'] = to_email  
     msg['Subject'] = subject  
       
-    msg.attach(MIMEText(body, 'plain'))  
+    msg.attach(MIMEText(body, 'html'))  
       
     server = smtplib.SMTP('smtp.gmail.com', 587)  
     server.starttls()  
@@ -20,7 +20,7 @@ def send_email(subject, body, to_email, from_email, password):
 if __name__ == "__main__":  
     import os  
     subject = "Ramalan Cuaca Hari Ini"  
-    body = open('email.txt').read()  
+    body = open('email.html').read()  
     to_email = os.getenv('EMAIL_TO')  
     from_email = os.getenv('EMAIL_FROM')  
     password = os.getenv('EMAIL_PASSWORD')  
