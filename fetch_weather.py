@@ -29,7 +29,7 @@ def fetch_weather(api_key, location_key):
 def fahrenheit_to_celsius(fahrenheit):  
     return (fahrenheit - 32) * 5.0 / 9.0  
   
-def format_weather(weather_info):  
+def format_weather(weather_info, sender_name):  
     temp_min_celsius = fahrenheit_to_celsius(weather_info['temperature_min'])  
     temp_max_celsius = fahrenheit_to_celsius(weather_info['temperature_max'])  
   
@@ -50,18 +50,24 @@ def format_weather(weather_info):
             <p><strong>Tingkat Keparahan:</strong> {weather_info['headline_severity']}</p>  
             <p><strong>Deskripsi:</strong> {weather_info['headline_text']}</p>  
         </div>  
-        <h3 style="color: #007bff; margin-top: 20px;">Temperatur</h3>  
+          
+        <h3 style="background-color: #ffcc00; color: #333; padding: 10px; border-radius: 5px;">Temperatur</h3>  
         <p><strong>Minimum:</strong> {temp_min_celsius:.1f} °C</p>  
         <p><strong>Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
-        <h3 style="color: #007bff; margin-top: 20px;">Kondisi Cuaca</h3>  
+          
+        <h3 style="background-color: #ffcc00; color: #333; padding: 10px; border-radius: 5px;">Kondisi Cuaca</h3>  
         <p><strong>Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
         <p><strong>Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
-        <h3 style="color: #007bff; margin-top: 20px;">Probabilitas Presipitasi</h3>  
+          
+        <h3 style="background-color: #ffcc00; color: #333; padding: 10px; border-radius: 5px;">Probabilitas Presipitasi</h3>  
         <p>Hujan di siang hari: <strong>{'Ya' if weather_info['day_has_precipitation'] else 'Tidak'}</strong></p>  
         <p>Hujan di malam hari: <strong>{'Ya' if weather_info['night_has_precipitation'] else 'Tidak'}</strong></p>  
         <p><strong>Jenis Presipitasi:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
-        <h3 style="color: #007bff; margin-top: 20px;">Informasi Lebih Lanjut</h3>  
+          
+        <h3 style="background-color: #ffcc00; color: #333; padding: 10px; border-radius: 5px;">Informasi Lebih Lanjut</h3>  
         <p><a href="{weather_info['mobile_link']}" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Lihat lebih lanjut</a></p>  
+          
+        <p style="text-align: center; margin-top: 20px;"><strong>Pengirim:</strong> {sender_name}</p>  
     </div>  
 </body>  
 </html>  
@@ -70,7 +76,8 @@ def format_weather(weather_info):
 if __name__ == "__main__":  
     api_key = os.getenv('ACCUWEATHER_API_KEY')  
     location_key = "202243"  
+    sender_name = "Dukun Cabhul 👻"
     weather_info = fetch_weather(api_key, location_key)  
-    formatted_weather = format_weather(weather_info)  
+    formatted_weather = format_weather(weather_info, sender_name)  
     with open('email_body.html', 'w') as f:  
         f.write(formatted_weather)  
