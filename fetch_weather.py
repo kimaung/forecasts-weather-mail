@@ -1,5 +1,6 @@
 import requests  
 from dateutil import parser  
+import os  
   
 def fetch_weather(api_key, location_key):  
     url = f"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location_key}?apikey={api_key}&language=id"  
@@ -42,36 +43,35 @@ def format_weather(weather_info):
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Ramalan Cuaca</title>  
-    <link rel="stylesheet" href="styles.css">  
 </head>  
-<body>  
-    <div class="weather-forecast">  
-        <h2>Ramalan Cuaca di Serang</h2>  
-        <div class="headline">  
+<body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">  
+    <div class="weather-forecast" style="background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 600px; margin: auto; transition: transform 0.3s;">  
+        <h2 style="text-align: center; color: #333; font-size: 24px; margin-bottom: 20px;">Ramalan Cuaca di Serang</h2>  
+        <div class="headline" style="background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-bottom: 20px;">  
             <p><strong>Tanggal Efektif:</strong> {weather_info['headline_effective_date']}</p>  
             <p><strong>Tanggal Berakhir:</strong> {weather_info['headline_end_date']}</p>  
             <p><strong>Tingkat Keparahan:</strong> {weather_info['headline_severity']}</p>  
             <p><strong>Deskripsi:</strong> {weather_info['headline_text']}</p>  
         </div>  
           
-        <h3>Temperatur</h3>  
+        <h3 style="color: #007bff; margin-top: 20px;">Temperatur</h3>  
         <p><strong>Minimum:</strong> {temp_min_celsius:.1f} °C</p>  
         <p><strong>Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
           
-        <h3>Kondisi Cuaca</h3>  
-        <div class="weather-icon">  
-            <img src="icon-thunderstorms.png" alt="Thunderstorms">  
+        <h3 style="color: #007bff; margin-top: 20px;">Kondisi Cuaca</h3>  
+        <div class="weather-icon" style="text-align: center; margin: 10px 0;">  
+            <img src="icon-thunderstorms.png" alt="Thunderstorms" style="width: 100px; height: auto;">  
         </div>  
         <p><strong>Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
         <p><strong>Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
           
-        <h3>Probabilitas Presipitasi</h3>  
+        <h3 style="color: #007bff; margin-top: 20px;">Probabilitas Presipitasi</h3>  
         <p>Hujan di siang hari: <strong>{'Ya' if weather_info['day_has_precipitation'] else 'Tidak'}</strong></p>  
         <p>Hujan di malam hari: <strong>{'Ya' if weather_info['night_has_precipitation'] else 'Tidak'}</strong></p>  
         <p><strong>Jenis Presipitasi:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
           
-        <h3>Informasi Lebih Lanjut</h3>  
-        <p><a href="{weather_info['mobile_link']}" target="_blank">Lihat lebih lanjut</a></p>  
+        <h3 style="color: #007bff; margin-top: 20px;">Informasi Lebih Lanjut</h3>  
+        <p><a href="{weather_info['mobile_link']}" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Lihat lebih lanjut</a></p>  
     </div>  
 </body>  
 </html>  
@@ -79,7 +79,6 @@ def format_weather(weather_info):
     return formatted_weather  
   
 if __name__ == "__main__":  
-    import os  
     api_key = os.getenv('ACCUWEATHER_API_KEY')  
     location_key = "202243"  
     weather_info = fetch_weather(api_key, location_key)  
