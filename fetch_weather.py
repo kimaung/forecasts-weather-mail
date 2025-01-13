@@ -43,7 +43,7 @@ def format_weather(weather_info):
 </head>  
 <body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">  
     <div class="weather-forecast" style="background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 600px; margin: auto;">  
-        <h2 style="text-align: center; color: #333; font-size: 24px; margin-bottom: 20px;">Ramalan Cuaca di Serang</h2>  
+        <h2 style="text-align: center; color: #333; font-size: 24px; margin-bottom: 20px;">Ramalan Cuaca Oleh Dukun Chabul 👻</h2>  
         <div class="headline" style="background-color: rgba(200, 200, 200, 0.5); padding: 15px; border-radius: 5px; margin-bottom: 20px;">  
             <p><strong>Tanggal Efektif:</strong> {weather_info['headline_effective_date']}</p>  
             <p><strong>Tanggal Berakhir:</strong> {weather_info['headline_end_date']}</p>  
