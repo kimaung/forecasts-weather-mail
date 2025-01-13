@@ -22,23 +22,20 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip  
+          python -m pip install --upgrade pip    
           pip install requests python-dateutil
 
       - name: Set environment variables
         run: |
-          echo "ACCUWEATHER_API_KEY=${{ secrets.ACCUWEATHER_API_KEY }}" >> $GITHUB_ENV  
-          echo "EMAIL_TO=${{ secrets.EMAIL_TO }}" >> $GITHUB_ENV  
-          echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> $GITHUB_ENV  
+          echo "ACCUWEATHER_API_KEY=${{ secrets.ACCUWEATHER_API_KEY }}" >> $GITHUB_ENV    
+          echo "EMAIL_TO=${{ secrets.EMAIL_TO }}" >> $GITHUB_ENV    
+          echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> $GITHUB_ENV    
           echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Fetch weather data and format email body
-        id: fetch_weather
         run: |
-          formatted_weather=$(python fetch_weather.py)  
-          echo "EMAIL_BODY=$formatted_weather" >> $GITHUB_ENV
+          python fetch_weather.py
 
       - name: Send email
         run: |
-          echo "EMAIL_BODY: $EMAIL_BODY"  
           python send_email.py
