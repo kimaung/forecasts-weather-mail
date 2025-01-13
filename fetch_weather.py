@@ -44,27 +44,27 @@ def format_weather(weather_info):
 <body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">  
     <div class="weather-forecast" style="background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 20px; max-width: 600px; margin: auto;">  
         <h2 style="text-align: center; color: #333; font-size: 24px; margin-bottom: 20px;">Ramalan Cuaca di Serang</h2>  
-        <div class="headline" style="background-color: rgba(200, 200, 200, 0.3); padding: 15px; border-radius: 5px; margin-bottom: 20px;">  
+        <div class="headline" style="background-color: rgba(200, 200, 200, 0.5); padding: 15px; border-radius: 5px; margin-bottom: 20px;">  
             <p><strong>Tanggal Efektif:</strong> {weather_info['headline_effective_date']}</p>  
             <p><strong>Tanggal Berakhir:</strong> {weather_info['headline_end_date']}</p>  
             <p><strong>Tingkat Keparahan:</strong> {weather_info['headline_severity']}</p>  
             <p><strong>Deskripsi:</strong> {weather_info['headline_text']}</p>  
         </div>  
           
-        <h3 style="background-color: rgba(200, 200, 200, 0.3); color: #333; padding: 10px; border-radius: 5px;">Temperatur</h3>  
+        <h3 style="background-color: rgba(200, 200, 200, 0.2); color: #333; padding: 10px; border-radius: 5px;">Temperatur</h3>  
         <p><strong>Minimum:</strong> {temp_min_celsius:.1f} °C</p>  
         <p><strong>Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
           
-        <h3 style="background-color: rgba(200, 200, 200, 0.3); color: #333; padding: 10px; border-radius: 5px;">Kondisi Cuaca</h3>  
+        <h3 style="background-color: rgba(200, 200, 200, 0.2); color: #333; padding: 10px; border-radius: 5px;">Kondisi Cuaca</h3>  
         <p><strong>Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
         <p><strong>Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
           
-        <h3 style="background-color: rgba(200, 200, 200, 0.3); color: #333; padding: 10px; border-radius: 5px;">Probabilitas Presipitasi</h3>  
+        <h3 style="background-color: rgba(200, 200, 200, 0.2); color: #333; padding: 10px; border-radius: 5px;">Probabilitas Presipitasi</h3>  
         <p>Hujan di siang hari: <strong>{'Ya' if weather_info['day_has_precipitation'] else 'Tidak'}</strong></p>  
         <p>Hujan di malam hari: <strong>{'Ya' if weather_info['night_has_precipitation'] else 'Tidak'}</strong></p>  
         <p><strong>Jenis Presipitasi:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
           
-        <h3 style="background-color: rgba(200, 200, 200, 0.3); color: #333; padding: 10px; border-radius: 5px;">Informasi Lebih Lanjut</h3>  
+        <h3 style="background-color: rgba(200, 200, 200, 0.2); color: #333; padding: 10px; border-radius: 5px;">Informasi Lebih Lanjut</h3>  
         <p><a href="{weather_info['mobile_link']}" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Lihat lebih lanjut</a></p>  
     </div>  
 </body>  
