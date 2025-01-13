@@ -26,4 +26,8 @@ if __name__ == "__main__":
     from_email = os.getenv('EMAIL_FROM')  
     password = os.getenv('EMAIL_PASSWORD')  
       
+    if body is None:  
+        print("EMAIL_BODY is not set. Exiting.")  
+        exit(1)  
+      
     send_email(subject, body, to_email, from_email, password)  
