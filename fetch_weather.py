@@ -1,6 +1,5 @@
 import requests  
 from dateutil import parser  
-import os  
   
 def fetch_weather(api_key, location_key):  
     url = f"http://dataservice.accuweather.com/forecasts/v1/daily/1day/{location_key}?apikey={api_key}&language=id"  
@@ -102,7 +101,7 @@ def format_weather(weather_info):
             <h2>Kondisi Cuaca Harian</h2>  
             <p><strong>Ikon Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
             <p><strong>Deskripsi Cuaca Siang:</strong> {'Hujan' if weather_info['day_has_precipitation'] else 'Tidak Hujan'}</p>  
-            <p><strong>Jenis Presipitasi Siang:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
+            <p><strong>Jenis Presipitapasi Siang:</strong> {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}</p>  
             <p><strong>Ikon Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
             <p><strong>Deskripsi Cuaca Malam:</strong> {'Hujan' if weather_info['night_has_precipitation'] else 'Tidak Hujan'}</p>  
             <p><strong>Jenis Presipitasi Malam:</strong> {weather_info['night_precipitation_type'] if weather_info['night_has_precipitation'] else 'N/A'}</p>  
@@ -124,4 +123,5 @@ if __name__ == "__main__":
     location_key = "202243"  
     weather_info = fetch_weather(api_key, location_key)  
     formatted_weather = format_weather(weather_info)  
-    print(formatted_weather)  
+    with open('email_body.html', 'w') as f:  
+        f.write(formatted_weather)  

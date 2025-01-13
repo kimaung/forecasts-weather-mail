@@ -21,12 +21,12 @@ def send_email(subject, body, to_email, from_email, password):
 if __name__ == "__main__":  
     import os  
     subject = "Ramalan Cuaca Hari Ini"  
-    body = os.getenv('EMAIL_BODY')  
+    body = open('email_body.html').read()  
     to_email = os.getenv('EMAIL_TO')  
     from_email = os.getenv('EMAIL_FROM')  
     password = os.getenv('EMAIL_PASSWORD')  
       
-    if body is None:  
+    if not body:  
         print("EMAIL_BODY is not set. Exiting.")  
         exit(1)  
       
