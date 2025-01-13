@@ -59,9 +59,6 @@ def format_weather(weather_info):
         <p><strong>Maksimum:</strong> {temp_max_celsius:.1f} °C</p>  
           
         <h3 style="color: #007bff; margin-top: 20px;">Kondisi Cuaca</h3>  
-        <div class="weather-icon" style="text-align: center; margin: 10px 0;">  
-            <img src="icon-thunderstorms.png" alt="Thunderstorms" style="width: 100px; height: auto;">  
-        </div>  
         <p><strong>Cuaca Siang:</strong> {weather_info['day_icon_phrase']}</p>  
         <p><strong>Cuaca Malam:</strong> {weather_info['night_icon_phrase']}</p>  
           
