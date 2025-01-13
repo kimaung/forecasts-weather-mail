@@ -124,5 +124,4 @@ if __name__ == "__main__":
     location_key = "202243"  
     weather_info = fetch_weather(api_key, location_key)  
     formatted_weather = format_weather(weather_info)  
-    os.environ['EMAIL_BODY'] = formatted_weather  
     print(formatted_weather)  
