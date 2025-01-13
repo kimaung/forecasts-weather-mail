@@ -1,5 +1,4 @@
 import requests  
-import json  
 from dateutil import parser  
   
 def fetch_weather(api_key, location_key):  
@@ -31,27 +30,27 @@ def fetch_weather(api_key, location_key):
   
 def format_weather(weather_info):  
     formatted_weather = f"""  
-Judul Ramalan Cuaca:  
-    Teks: {weather_info['headline_text']}  
-    Tanggal Efektif: {weather_info['headline_effective_date']}  
-    Tanggal Berakhir: {weather_info['headline_end_date']}  
-    Severity: {weather_info['headline_severity']}  
+**Judul Ramalan Cuaca:**  
+- **Teks:** {weather_info['headline_text']}  
+- **Tanggal Efektif:** {weather_info['headline_effective_date']}  
+- **Tanggal Berakhir:** {weather_info['headline_end_date']}  
+- **Severity:** {weather_info['headline_severity']}  
   
-Suhu:  
-    Suhu Minimum: {weather_info['temperature_min']} F  
-    Suhu Maksimum: {weather_info['temperature_max']} F  
+**Suhu:**  
+- **Suhu Minimum:** {weather_info['temperature_min']} F  
+- **Suhu Maksimum:** {weather_info['temperature_max']} F  
   
-Kondisi Cuaca Harian:  
-    Ikon Cuaca Siang: {weather_info['day_icon_phrase']}  
-    Deskripsi Cuaca Siang: {'Hujan' if weather_info['day_has_precipitation'] else 'Tidak Hujan'}  
-    Jenis Presipitasi Siang: {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}  
-    Ikon Cuaca Malam: {weather_info['night_icon_phrase']}  
-    Deskripsi Cuaca Malam: {'Hujan' if weather_info['night_has_precipitation'] else 'Tidak Hujan'}  
-    Jenis Presipitasi Malam: {weather_info['night_precipitation_type'] if weather_info['night_has_precipitation'] else 'N/A'}  
+**Kondisi Cuaca Harian:**  
+- **Ikon Cuaca Siang:** {weather_info['day_icon_phrase']}  
+- **Deskripsi Cuaca Siang:** {'Hujan' if weather_info['day_has_precipitation'] else 'Tidak Hujan'}  
+- **Jenis Presipitasi Siang:** {weather_info['day_precipitation_type'] if weather_info['day_has_precipitation'] else 'N/A'}  
+- **Ikon Cuaca Malam:** {weather_info['night_icon_phrase']}  
+- **Deskripsi Cuaca Malam:** {'Hujan' if weather_info['night_has_precipitation'] else 'Tidak Hujan'}  
+- **Jenis Presipitasi Malam:** {weather_info['night_precipitation_type'] if weather_info['night_has_precipitation'] else 'N/A'}  
   
-Link untuk Informasi Lebih Lanjut:  
-    Tautan ke Halaman Ramalan Cuaca: {weather_info['mobile_link']}  
-    """  
+**Link untuk Informasi Lebih Lanjut:**  
+- **Tautan ke Halaman Ramalan Cuaca:** [{weather_info['mobile_link']}]({weather_info['mobile_link']})  
+"""  
     return formatted_weather  
   
 if __name__ == "__main__":  
